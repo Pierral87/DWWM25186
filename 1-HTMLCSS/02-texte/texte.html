@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manip de Texte HTML</title>
+
+    <!-- Ici ces links nous servent à rajouter des polices que j'ai récupéré sur google font 
+     https://fonts.google.com/
+     Il suffit de choisir les polices que l'on souhaite, cliquer sur "Get Font" et récupérer le "Get embed code" 
+     Cela nous prépare directement le lien à coller ici sur notre page ! 
+     Ensuite j'applique la police en css dans l'attribut font-family :  (voir fichier texte.css)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+  
+    <link rel="stylesheet" href="texte.css">
+</head>
+
+<body>
+    <main>
+        <!-- main ici me permet de contenir toute ma page, on conservera cette bonne pratique sémantique pour insérer ici dans le main le contenu "central" de la page -->
+        <h1>Titre principal h1</h1>
+        <h2>Titre secondaire h2</h2>
+        <h3>Titre secondaire h3</h3>
+        <h4>Titre secondaire h4</h4>
+        <h5>Titre secondaire h5</h5>
+        <h6>Titre secondaire h6</h6>
+        <!-- Ci dessus des balises titre de h1 à h6 
+         Toute page html doit être ordonnée avec des titres, on considère que l'on met UN SEUL titre h1 sur une page, ce sera vraiment le titre de notre page, les autres niveaux on considère qu'ils sont des sous-titre -->
+
+
+        <!-- La balise p pour paragraphe, elle est censée contenir du texte -->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed <strong>doloribus</strong> animi <b>pariatur</b>
+            eaque hic delectus corrupti fuga, excepturi quas quis obcaecati? Placeat sapiente amet iure sequi architecto
+            tempore, vitae molestias.</p>
+        <br><br><br>
+        <hr>
+        <!-- En HTML on a une différenciation de type d'éléments/balises, les éléments bloc et les éléments inline 
+          Un élément type bloc prendra automatiquement toute la largeur qu'il peut sur la page, ne laissant aucun autre élément s'afficher sur la même ligne que lui
+          Un élément type inline prend uniquement la place dont il a besoin !  -->
+        <!-- Div et span sont des balises sans aucunes valeurs sémantiques, on s'en sert pour appliquer du style via des classes et ids  -->
+        <!-- Div c'est une balise bloc -->
+        <div>Ca c'est une balise bloc</div>
+        <!-- span c'est une balise inline -->
+        <span>Ca c'est une balise inline</span>
+        <!-- p c'est du bloc, strong c'est du inline -->
+        <p>Coucou</p>
+        <p>Ca va ?</p>
+        <strong>Coucou</strong> <strong>Ca va ?</strong>
+        <hr>
+        <!-- strong pour la mise en importance d'un contenu, par défaut style en gras -->
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet corrupti ea, quidem voluptatibus tenetur iste
+        officiis! Molestias at debitis ducimus quasi assumenda consectetur voluptate, necessitatibus esse, laborum
+        officia optio beatae. :
+        <!-- la balise cite pour mettre en évidence une "citation", j'ai la balise em également équivalente à strong d'un point de vue sémantique mais mets en italique par défaut, sinon pour italique simple j'ai i, mais encore une fois, on préfère mettre nos style en css ! -->
+        <cite>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel illum eum necessitatibus nisi alias,
+            blanditiis natus accusantium ex iusto iste, praesentium recusandae ullam totam molestias. Similique possimus
+            nulla labore ad.</cite>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. <i>Perspiciatis</i> quaerat <em>inventore</em> nisi
+        totam non harum culpa alias quis ullam, quo sapiente, ea tempora officia eos asperiores nostrum accusantium nam
+        error.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt inventore saepe blanditiis ullam tenetur,
+        distinctio illo nemo et ea sed obcaecati enim, mollitia dolor molestiae ipsa. Illum minima nobis blanditiis?
+        <del>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, similique dolores, excepturi provident
+            quibusdam mollitia reprehenderit quod vitae adipisci explicabo hic suscipit at voluptates veniam omnis,
+            veritatis sequi pariatur deleniti.</del>
+        <!-- balise del pour symboliser un contenu supprimé -->
+
+        <!-- un fieldset ça englobe du contenu  dans un cadre avec la légende dans l'entête du cadre -->
+        <fieldset>
+            <legend>
+                La légende ici
+            </legend>
+            <p> Et le contenu là ! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nesciunt incidunt maxime
+                rerum beatae reprehenderit inventore odit aliquam consectetur laboriosam labore quos voluptatibus, dolor
+                saepe aliquid quasi tenetur! Dolor, harum?</p>
+        </fieldset>
+
+        <!-- la balise details représente un contenu à ouvrir de type "voir details" -->
+        <details>
+            <summary>
+                Ici details avec une fleche ?
+            </summary>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non delectus eligendi impedit at doloribus
+                assumenda a laudantium vitae, voluptatem fugiat inventore enim, iure eum harum facere nihil corporis
+                repellat beatae!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus illo earum voluptatibus, rerum
+                quis deleniti dolor repudiandae eum ad natus magnam ex at modi similique ab nihil dolorem alias vitae.
+            </p>
+        </details>
+
+    </main>
+
+</body>
+
+</html>
