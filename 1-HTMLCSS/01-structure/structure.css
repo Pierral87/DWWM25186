@@ -1,0 +1,48 @@
+/* Ceci est un commentaire css */
+/* Pour appliquer de la mise en forme : on appelle l'élément concerné et on donne un ensemble de propriété avec leurs valeurs correspondantes */
+
+body {
+   background-color: rgb(224, 221, 221);  /* Couleur de fond */
+    /* background-color: #222222; */
+    /* background-color: rgb(184, 41, 41); */
+    /* background-color: rgba(237, 2, 2, 0.637); */
+    /* Valeur possible pour les couleurs : 
+        par son nom : red, green lightgray, bisque etc  
+        par son code hexadécimal 
+        par son code rgb 
+        par son coge rgba
+         */
+}
+
+header {
+    background-color: #222222;
+    color: white; /* couleur du texte */
+    height: 140px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+nav {
+    background-color: darksalmon;
+    color: white;
+    height: 30px;
+    text-align:center;
+    line-height: 30px;
+}
+
+section {
+    background-color: beige;
+    min-height: 500px;
+    padding: 30px;
+}
+
+footer {
+    background-color: blueviolet;
+    color: white;
+    height: 150px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+
+
