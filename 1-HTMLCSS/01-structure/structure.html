@@ -1,11 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Dans un document HTML nous avons toujours une balise DOCTYPE qui lance l'initialisation de la page -->
+<!-- Ceci est un commentaire html -->
+<!-- Mettre en place l'autosave Fichier -> Auto save à cocher -->
+<!-- Le HTML est un langage de balises -->
+<html lang="fr">
+
 <head>
+    <!-- la balise head, c'est l'entête du document (informations pour le bon fonctionnement de la page) -->
+
+    <!-- L'encodage en UTF-8 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!-- On peut définir des mots clés dans les balises meta, cela va aider au referencement  -->
+    <meta name="keywords" content="motclé1 motclé2 evenement sportif ski">
+
+    <meta name="author" content="Pierralexandre Lacaze">
+    <meta name="description" content="Une description blablabla...">
+
+    <!-- Appel du fichier css, Cascading Style Sheet, c'est ce qui va nous permettre de définir du design sur notre contenu html -->
+    <link rel="stylesheet" href="structure.css">
+    <!-- Le HTML et ses balises à proprement parler ce n'est que le contenu de notre site, on le met ensuite en forme via le CSS -->
+
+    <!-- Titre de la page, visible dans le navigateur -->
+    <title>Structure HTML</title>
 </head>
+
 <body>
-    
+    <!-- le body : C'est le corps du document (tout ce qui est visible sur la page) -->
+
+    <!-- On va utiliser ici des balises sémantiques plutôt que de simples div 
+        Un div c'est une division de ma page pour diviser en bloc mon contenu pour qu'il soit mieux compréhensible par les moteurs de recherche 
+        Depuis quelques années maintenant nous avons des div "nommés" par exemple header nav main section et encore d'autres -->
+    <header>
+        <!-- Zone du haut, ex : bannière, logo, slogan, contient parfois la nav -->
+        Haut de page
+    </header>
+
+    <nav>
+        <!-- Un menu de la page, pour naviguer sur notre site -->
+        Menu
+    </nav>
+
+    <main>
+        <article>
+
+            <section>
+                <!-- zone de contenu : texte, images, regroupement thématique, souvent avec un titre  -->
+                <div>
+                    <!-- zone de structure neutre -->
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit odit aut quas illo fugiat voluptatum
+                    eum
+                    eligendi quaerat itaque cum laborum reprehenderit error, autem nam eos velit praesentium impedit.
+                    Ipsa.
+                    Quibusdam repellendus molestias minus quia rem a eum ipsa iste, perspiciatis beatae repellat, qui
+                    sapiente quidem est accusamus nostrum voluptas recusandae ab iure odit? Exercitationem inventore ut
+                    voluptas aliquam ipsum!
+                    Temporibus reprehenderit suscipit assumenda exercitationem cumque eius officiis, possimus non, ipsum
+                    fuga eligendi velit dolores incidunt ut. Maiores, harum earum consequatur sunt enim consequuntur
+                    iure
+                    dolor itaque dignissimos unde facere.
+                    <!-- br : break = retour à la ligne -->
+                    <br><br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aperiam eligendi perspiciatis
+                    sint
+                    itaque ut dolorum, qui quod tempore rerum obcaecati magnam necessitatibus deleniti debitis
+                    laudantium,
+                    voluptates ipsum molestias recusandae.
+                    Enim nesciunt modi, ipsam assumenda nam facilis tenetur voluptatibus veritatis repellendus
+                    dignissimos,
+                    rerum harum ipsum, similique cupiditate odio in asperiores doloremque. Animi similique aut magnam!
+                    Incidunt voluptas illo quidem nisi.
+                    Aliquam architecto quidem quae, molestiae facere minima necessitatibus voluptates quas. Dolores
+                    aperiam
+                    optio quas perferendis et expedita autem, quisquam obcaecati odit vero modi molestias eveniet
+                    eligendi
+                    sequi corrupti. Quo, mollitia.
+                </div>
+            </section>
+        </article>
+
+    </main>
+    <footer>
+        <!-- Zone du bas, pied de page, contenu secondaire ex : mentions légales, plan du site, CGU etc etc -->
+        Copyright &copy; 2025
+    </footer>
+
+
 </body>
+
 </html>
