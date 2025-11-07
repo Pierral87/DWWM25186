@@ -7,3 +7,84 @@
     du font-weight, style, size, des polices, etc etc 
 
 */
+
+body {
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: #207bf2;
+    color:white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin: 0 auto;
+    width: 80%;
+}
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h2, h3, h4, h5, h6 {
+    color: #207bf2;
+}
+
+.red {
+    color: red;
+}
+
+fieldset {
+    margin: 0;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+details {
+    margin-top: 20px;
+    border: 2px dashed rgb(39, 38, 38);
+}
+
+summary {
+    font-weight: bold;
+}
+
+footer {
+    background-color: #207bf2;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 780px) {
+    main {
+        width: 100%;
+    }
+
+    h2, h3, h4, h5, h6 {
+    color: red;
+}
+
+}

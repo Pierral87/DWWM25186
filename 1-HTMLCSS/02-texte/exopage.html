@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercice HTML/CSS</title>
+    <link rel="stylesheet" href="exopage.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- 
         Realisation d'une première page personnelle 
@@ -14,7 +22,7 @@
                 - 1 h1 
                 - 1 nav 
                     - 3 span / a 
-            - Division main 
+            - Division main ou section
                 - 1 h2 
                 - 3 p avec du texte en gras, en italique, en couleur, en barré 
             - Division fieldset 
@@ -26,5 +34,63 @@
             - Division footer 
                 - 1 p 
     -->
+
+    <!-- HEADER --------------------------------------->
+    <header>
+        <h1>Bienvenue</h1>
+
+        <!-- NAV ---------------------------------------------------------------->
+        <nav>
+            <a href="">Accueil</a>
+            <a href="">A propos</a>
+            <a href="">Contact</a>
+        </nav>
+    </header>
+
+    <!-- CONTENU PRINCIPAL ---------------------------------------------------------------->
+    <main>
+        <!-- SECTION ---------------------------------------------------------------->
+        <section>
+            <h2>Section Principal </h2>
+            <p>Paragraphe 1 : Lorem, ipsum dolor <strong>sit amet</strong> consectetur adipisicing elit. Voluptas ex accusamus atque
+                aliquid alias libero nesciunt <em>reiciendis harum</em> tenetur, fugit dolores nemo officia, tempora earum animi
+                error optio tempore nobis.</p>
+            <p>Paragraphe 2 : Lorem ipsum dolor <del>sit amet consectetur adipisicing elit.</del> Pariatur voluptas voluptates
+                incidunt sunt nam minima omnis? Sapiente omnis cumque animi nulla distinctio! Enim, maiores maxime
+                necessitatibus sunt sed laboriosam accusantium.</p>
+            <p>Paragraphe 3 : Lorem ipsum dolor sit, <span class="red">amet consectetur</span> adipisicing elit. Laudantium, omnis. Unde
+                consequatur, quo, perferendis quam ipsam exercitationem pariatur iure rerum in mollitia inventore.
+                Voluptate, velit ex sed deleniti dignissimos mollitia.</p>
+
+
+            <!-- FIELDSET ---------------------------------------------------------------->
+            <fieldset>
+                <legend>
+                    Legende du fieldset
+                </legend>
+                <p>Contenu du fieldset : Lorem ipsum dolor sit amet consectetur, adipisicing elit. In doloribus itaque
+                    voluptates similique laborum temporibus atque alias unde vero magnam nemo molestias, ad veniam
+                    aperiam
+                    eos pariatur aut, ipsam maiores.</p>
+            </fieldset>
+
+            <!-- DETAILS ---------------------------------------------------------------->
+            <details>
+                <summary>Summary du details</summary>
+                <p>Contenu du détails : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, ratione
+                    perferendis
+                    voluptate eligendi enim eius commodi unde distinctio maxime dignissimos autem provident?
+                    Consequuntur
+                    hic quo quod. Veniam nam quaerat facere?</p>
+            </details>
+        </section>
+    </main>
+
+    <!-- FOOTER ---------------------------------------------------------------->
+    <footer>
+        <p>&copy; 2025 - Mon Site Web - Pierra</p>
+    </footer>
+
 </body>
+
 </html>
