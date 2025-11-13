@@ -1,0 +1,65 @@
+#conteneur {
+    width: 1000px;
+    border: 1px solid #000000;
+    padding: 20px;
+    margin: 25px auto;
+}
+
+p {
+    font-weight: bold;
+    color: red;
+}
+
+p:nth-child(odd) {
+    color: rgb(9, 134, 9);
+}
+
+p:nth-child(even) {
+    color: rgb(18, 120, 184);
+}
+
+p:first-child {
+    color: rgb(140, 21, 173);
+}
+
+/* p:last-child{
+    color: rgb(231, 131, 17);
+} */
+
+.ma_classe {
+    margin: 20px;
+    background-color: red;
+    color: white !important;
+    padding: 20px;
+}
+
+span {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* #mon_id span {
+    color: red;
+} */
+
+div div span {
+    color: red;
+}
+
+/* 
+POUR SELECTIONNER DES ELEMENTS HTML VIA CSS
+-----------------------------------------------
+* {} : caractère universel : toutes les balises sans exception 
+par son nom de balise : p {}    div {}   etc 
+par son id : #conteneur {}   #monid{}
+par sa classe : .ma_classe {}  .truc {}
+par la relation parent enfant : div:first-child {}  div:last-child {} 
+par son chemin : div span {}
+
+------
+
+Différences entre un id et une classe : 
+    - un id est fait pour être unique sur une page (on ne réutilise JAMAIS deux fois le même id sur une page)
+    - une classe est faite pour être répétée autant de fois que nécessaire (par exemple, couleur du texte en rouge, pourrait être englobé dans une classe)
+
+*/

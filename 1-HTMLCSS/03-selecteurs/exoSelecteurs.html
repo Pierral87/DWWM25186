@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="exoSelecteurs.css">
+  <title>Exercice Sélecteurs CSS</title>
+</head>
+<body>
+
+  <div id="container">
+
+    <header>
+      <h1>Titre Principal</h1>
+      <p class="red-text">Bienvenue sur notre site Web!</p>
+    </header>
+
+    <main>
+
+      <section class="box" id="section1">
+        <h2>Section 1</h2>
+        <p class="red-text">Ceci est un paragraphe rouge.</p>
+        <div class="nested-box" id="nestedBox1">
+          <p class="blue-text">Ceci est un <span>texte bleu</span> dans une boîte imbriquée.</p>
+          <div class="image-container">
+            <img src="image1.jpg" alt="Image 1">
+          </div>
+        </div>
+      </section>
+
+      <div class="box" id="section2">
+        <h2>Section 2</h2>
+        <p class="green-text">Ceci est un paragraphe vert.</p>
+        <div class="nested-box" id="nestedBox2">
+          <p>Ceci est un paragraphe normal dans une boîte imbriquée.</p>
+          <div class="image-container">
+            <img src="image2.jpg" alt="Image 2">
+          </div>
+        </div>
+      </div>
+
+      <article id="special-article">
+        <h2>Article Spécial</h2>
+        <p>Ce <span>paragraphe</span> est dans un article spécial.</p>
+        <div class="box" id="articleBox">
+          <p class="orange-text">Ceci est un <span>paragraphe orange</span> dans une boîte.</p>
+          <div class="nested-box" id="nestedBox3">
+            <p>Ceci est un autre <span>paragraphe</span> dans une boîte imbriquée.</p>
+            <div class="image-container">
+              <img src="image3.jpg" alt="Image 3">
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>
+      <p>© 2024 Mon Site Web. Tous droits réservés.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

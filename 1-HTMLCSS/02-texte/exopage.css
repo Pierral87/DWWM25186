@@ -22,6 +22,8 @@ header {
     margin-bottom: 20px;
 }
 
+
+/* POUR LES LIENS DANS NAV */
 nav a {
     text-decoration: none;
     color: white;
@@ -29,10 +31,12 @@ nav a {
     margin-right: 20px;
 }
 
+/* HOVER POUR UN EFFET DIFFERENT LORS DU SURVOL SUR LES LIENS DE LA NAV */
 nav a:hover {
     text-decoration: underline;
 }
 
+/* STYLE PAR DEFAUT POUR LES GRANDS ECRANS, CONTENU CENTRAL à 80% DE LARGEUR */
 main {
     margin: 0 auto;
     width: 80%;
@@ -78,7 +82,9 @@ footer {
 }
 
 
+/* STYLE POUR LES ECRANS INFERIEURS à 780PX, TABLETTES ET INFERIEURS */
 @media screen and (max-width: 780px) {
+    /* POUR DES ECRANS PLUS PETIT ON PASSERA A 100% DE LARGEUR CE SERA PLUS CONFORTABLE */
     main {
         width: 100%;
     }
