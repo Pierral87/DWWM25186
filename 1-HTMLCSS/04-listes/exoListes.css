@@ -1,0 +1,46 @@
+#countriesList {
+    list-style-image: url('flag.svg');
+}
+
+
+
+/* Ci dessous pour définir des puces différentes pour chaque élément de liste, à faire correspondre à notre code  */
+/* ::marker {
+  --image: '📩 ';
+  content: counter(list-item) ' ' var(--image);
+}
+
+#countries li:nth-child(2)::marker {
+  --image: '🐈 ';
+}
+
+#countries li:nth-child(3)::marker {
+  --image: '🗑 ';
+}
+
+#countries li:nth-child(4)::marker {
+  --image: '🪴 ';
+}
+
+#countries li:nth-child(5)::marker {
+  --image: '🔑';
+} */
+
+
+#coffeeList {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: brown;
+}
+
+#todoList {
+    list-style-type: georgian;
+    background-color: tomato;
+}
+
+#todoList li {
+    display: inline;
+}
+
+#skillList {
+    list-style: square;
+}
