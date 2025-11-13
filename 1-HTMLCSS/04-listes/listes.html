@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="listes.css">
+</head>
+
+<body>
+    <!-- Il existe différents types de listes en html, les listes non ordonnées et les listes ordonnées -->
+
+    <!-- Ce sont les balises ul et ol -->
+    <!-- A l'intérieur de ces balises on a des éléments de liste au travers des balises li  -->
+
+    <ul id="premiere_liste">
+        <li>Cerises</li>
+        <li>Pommes</li>
+        <li>Fraises</li>
+        <li>Ananas</li>
+    </ul>
+
+    <ul id="deuxieme_liste">
+        <li>Cerises</li>
+        <li>Pommes</li>
+        <li>Fraises</li>
+        <li>Ananas</li>
+    </ul>
+
+
+    <ul id="troisieme_liste">
+        <li>Cerises</li>
+        <li>Pommes</li>
+        <li>Fraises</li>
+        <li>Categorie
+            <ul>
+                <li>Agrumes</li>
+                <li>Pommes</li>
+                <li>Petits fruits</li>
+            </ul>
+        </li>
+    </ul>
+
+    <ol>
+        <li>Lundi</li>
+        <li>Mardi</li>
+        <li>Mercredi</li>
+        <li>Jeudi</li>
+        <li>Vendredi</li>
+        <li>Samedi</li>
+        <li>Dimanche</li>
+    </ol>
+
+    <hr>
+
+    <nav>
+        <ul id="menu">
+            <li><a href="">Accueil</a></li>
+            <li><a href="">Categorie</a>
+                <ul class="sous-menu">
+                    <li><a href="">Informatique</a></li>
+                    <li><a href="">Electro-ménager</a></li>
+                    <li><a href="">Outils</a></li>
+                </ul>
+            </li>
+            <li><a href="">Panier</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Profil</a></li>
+        </ul>
+    </nav>
+    
+</body>
+
+</html>

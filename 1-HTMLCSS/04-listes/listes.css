@@ -1,0 +1,59 @@
+#deuxieme_liste {
+    /* le choix de la puce, ici none, on l'enlève! */
+    list-style: none; 
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    padding: 0;
+}
+
+#deuxieme_liste li {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+#deuxieme_liste li:hover {
+    background-color: darkslateblue;
+    color: white;
+}
+
+#troisieme_liste {
+    list-style: hiragana;
+}
+
+#troisieme_liste ul {
+    list-style: katakana;
+}
+
+#menu {
+    list-style: none;
+    /* display: flex; */
+}
+
+#menu li {
+    background-color: darkslateblue;
+}
+
+#menu a {
+    color: white;
+    padding: 10px; 
+    display: block;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: palevioletred;
+}
+
+#menu .sous-menu {
+    padding: 0;
+    list-style: none; 
+    background-color: gray;
+    display: none;
+}
+
+#menu li:hover .sous-menu {
+    display: block;
+}
+
+
