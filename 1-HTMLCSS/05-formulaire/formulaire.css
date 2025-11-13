@@ -1,0 +1,56 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid #c0c0c0;
+            padding: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #c0c0c0;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #c0c0c0;
+        }
+
+        input,
+        select {
+            height: 30px;
+        }
+
+        .radio {
+            width: initial;
+            margin-bottom: 0;
+        }
+
+        textarea {
+            resize: vertical;
+            /* vertical | horizontal | none */
+        }
+
+        #msgError {
+            background-color: red;
+            color:white;
+            font-weight: bold;
+            font-size:20px;
+        }

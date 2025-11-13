@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link rel="stylesheet" href="formulaire.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- les forms sont très importants sur le web, ce sont près de la moitié de nos actions en ligne 
+            En ligne qu'est ce qu'on fait ? On clique et on saisit et on valide !  
+            Les forms nous permettent de gérer toutes les actions de saisies !  
+        -->
+
+        <!-- Tout passe à l'intérieur de la balise form 
+         
+            Attributs de la balise form : 
+            ------------------------------------
+            method=""  : quelle méthode sera utilisée pour traiter le form, GET ou POST, par défaut GET, on mettra TOUJOURS POST ! 
+            action=""  : l'url cible lors de la validation du form (la plupart du temps, vide pour rester sur cette page)
+            enctype="multipart/form-data" : obligatoire si l'on souhaite récupérer des pièces jointes à ce form ! (via les input="file")
+
+
+            Attributs des champs du form (label, input, textarea, select etc) : 
+            for=""     : pour la balise label, permet de faire le lien entre le titre et le champ (le label se référence à un input ou autre)
+            type=""    :  pour les balises input permet de dire à quoi sert ce champ 
+                        - text : champ de saisie texte
+                        - email : vérifie le format du mail 
+                        - password : cache la saisie 
+                        - file : pièce jointe 
+                        - submit : bouton de validation 
+                        - radio : bouton à choisir
+                        - checkbox : case à cocher 
+                        - reset : annule les saisies
+            name=""     : représente le nom du champ, ABSOLUMENT A RENSEIGNER sinon, on ne pourra pas récupérer les données var via nos autres langages 
+            id=""       : permet de rattacher le for, et d'appliquer du style css et des scripts js à notre élément 
+
+            required : rend un champ obligatoire
+            palceholder="" : un texte indicatif dans le champ
+            maxlength=""  : pour une longueur max de la saisie 
+
+            disabled :  champ désactivé 
+            readonly : champ uniquement en lecture
+
+
+
+        
+        
+        -->
+        <form action="" method="POST" enctype="multipart/form-data">
+            <h2>Inscrivez vous</h2>
+
+            <div id="msgError"></div>
+
+            <!--  -->
+            <label for="pseudo">Pseudo</label>
+            <input type="text" id="pseudo" name="pseudo" required placeholder="Saisissez votre pseudo" maxlength="10">
+
+            <label for="">Mot de passe</label>
+            <input type="password" id="password" name="password">
+
+            <label for="">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="cv">CV</label><br>
+            <input type="file" name="cv" id="cv">
+
+            <label for="pays">Pays</label><br>
+            <select name="pays" id="pays">
+                <option value="fr">France</option>
+                <option value="es">Espagne</option>
+                <option value="po">Portugal</option>
+            </select>
+
+            <label for="genre">Genre</label><br><br>
+            <input type="radio" name="genre" id="genre" value="m">Homme
+            <input type="radio" name="genre" id="genre" value="f">Femme
+            <br>
+
+            <label for="adresse">Adresse</label>
+            <textarea name="adresse" id="adresse" rows="5"></textarea>
+            <br>
+
+
+            <!-- <input type="date" name="" id=""> -->
+            <!-- <input type="range" name="" id=""> -->
+             <!-- <input type="color" name="" id=""> -->
+
+            <input type="submit" value="Valider">
+
+        </form>
+
+    </div>
+</body>
+
+</html>
