@@ -1,0 +1,86 @@
+* {
+    transition: all 1s ease;
+    font-family: sans-serif;
+}
+
+/* Donne la taille de notre page contenue dans le conteneur */
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    border: 1px solid #dedede;
+    padding: 20px;
+}
+
+/* Donne une taille à nos classes div */
+.div {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    margin: 50px;
+}
+
+/* Donne la position relative à nos balises images, permet la superposition des deux images via les css suivants */
+img {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+/* Bloque la taille de l'élément id blocImage1 en disant que le dépassement est caché (pour gérer en fonction des tailles d'image) */
+#blocImage1 {
+    width: 640px;
+    height: 360px;
+    overflow: hidden;
+}
+
+/* Défini toutes les images contenues dans l'élément id blocImage1 comme étant de taille exactement égale au bloc en question */
+    #blocImage1 img {
+        width: 640px;
+        height: 360px;
+        /* display: block;  */
+    }
+
+/* Défini que le deuxième élément img de l'élément id blocImage1 descends hors champ du div, ce deuxieme élément n'est donc plus visible PROBLEME NE SERT A RIEN ? UNIQUEMENT LE MARGIN TOP */
+#blocImage1 img:nth-child(2) {
+    margin-top: -4px;
+    /* top: -360px; */
+}
+
+#blocImage2 {
+    position: relative;
+    width: 640px;
+    height: 360px;
+    overflow: hidden;
+}
+
+#blocImage2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 360px;
+    opacity: 0;
+    transition: all 1.5s ease;
+}
+
+/* Juste le design du bouton de changement d'image */
+#changerImage {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: indigo;
+    color: white;
+    text-decoration: none;
+}
+
+/* Juste le design des champs du form */
+input,
+select,
+button {
+    width: 350px;
+    height: 30px;
+    border: 1px solid lightslategray;
+    padding-left: 5px;
+}
