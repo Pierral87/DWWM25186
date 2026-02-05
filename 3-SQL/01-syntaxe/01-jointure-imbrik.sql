@@ -325,11 +325,72 @@ WHERE a.prenom = "Guillaume";
 +-----------+-------------+------------+
 
 -- EXERCICE 1 : Nous aimerions connaitre les dates de sortie et les dates de rendu pour les livres écrit par Alphonse Daudet 
+SELECT titre, date_sortie, date_rendu 
+FROM emprunt 
+INNER JOIN livre ON emprunt.id_livre = livre.id_livre
+WHERE auteur = "alphonse daudet";
++----------------+-------------+------------+
+| titre          | date_sortie | date_rendu |
++----------------+-------------+------------+
+| Le Petit chose | 2016-12-12  | 2016-12-22 |
++----------------+-------------+------------+
 -- EXERCICE 2 : Qui a emprunté le livre "une vie" sur l'année 2016 
+SELECT l.titre, ab.prenom, emp.date_sortie 
+FROM emprunt emp 
+JOIN abonne ab ON emp.id_abonne = ab.id_abonne 
+JOIN livre l ON emp.id_livre = l.id_livre 
+WHERE l.titre = "une vie" 
+AND YEAR(emp.date_sortie) = 2016;
++---------+-----------+-------------+
+| titre   | prenom    | date_sortie |
++---------+-----------+-------------+
+| Une vie | Guillaume | 2016-12-07  |
+| Une vie | Chloe     | 2016-12-11  |
++---------+-----------+-------------+
 -- EXERCICE 3 : Nous aimerions connaitre le nombre de livre emprunté par chaque abonné 
+SELECT abonne.prenom, COUNT(*) as nbr_emprunt 
+FROM emprunt 
+INNER JOIN abonne ON abonne.id_abonne = emprunt.id_abonne 
+GROUP BY abonne.prenom;
++-----------+-----------------+
+| prenom    | COUNT(id_livre) |
++-----------+-----------------+
+| Guillaume |               2 |
+| Benoit    |               3 |
+| Chloe     |               3 |
+| Laura     |               1 |
++-----------+-----------------+
 -- EXERCICE 4 : Nous aimerions connaitre le nombre de livre emprunté à rendre par chaque abonné 
+SELECT a.prenom, COUNT(*) AS livre_a_rendre 
+FROM emprunt e  
+JOIN abonne a ON e.id_abonne = a.id_abonne 
+WHERE e.date_rendu IS NULL 
+GROUP BY a.id_abonne;
++--------+----------------+
+| prenom | livre_a_rendre |
++--------+----------------+
+| Chloe  |              2 |
+| Benoit |              1 |
++--------+----------------+
 -- EXERCICE 5 : Qui (prenom) a emprunté Quoi (titre) et Quand (date_sortie) ?
-
+SELECT a.prenom, l.titre, e.date_sortie 
+FROM emprunt e 
+JOIN abonne a ON e.id_abonne = a.id_abonne 
+JOIN livre l ON e.id_livre = l.id_livre 
+ORDER BY a.prenom;
++-----------+-------------------------+-------------+
+| prenom    | titre                   | date_sortie |
++-----------+-------------------------+-------------+
+| Benoit    | Bel-Ami                 | 2016-12-07  |
+| Benoit    | Les Trois Mousquetaires | 2017-01-02  |
+| Benoit    | Une vie                 | 2017-02-20  |
+| Chloe     | Une vie                 | 2016-12-11  |
+| Chloe     | Les Trois Mousquetaires | 2017-02-15  |
+| Chloe     | Bel-Ami                 | 2026-01-23  |
+| Guillaume | Une vie                 | 2016-12-07  |
+| Guillaume | La Reine Margot         | 2016-12-15  |
+| Laura     | Le Petit chose          | 2016-12-12  |
++-----------+-------------------------+-------------+
 
 ----------------------------------------------------------------
 ----------------------------------------------------------------
@@ -337,3 +398,71 @@ WHERE a.prenom = "Guillaume";
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 
+-- Enregistrez-vous dans la table abonné 
+INSERT INTO abonne (prenom) VALUES ("Pierralex");
+SELECT * FROM abonne;
++-----------+-----------+
+| id_abonne | prenom    |
++-----------+-----------+
+|         1 | Guillaume |
+|         2 | Benoit    |
+|         3 | Chloe     |
+|         4 | Laura     |
+|         5 | Pierralex |
++-----------+-----------+
+
+--Affichez tous les prenoms des abonnés SANS EXCEPTION ainsi que les id_livre qu'ils ont emprunté si c'est le cas 
+SELECT a.prenom, e.id_livre  
+FROM abonne a
+JOIN emprunt e ON e.id_abonne = a.id_abonne
+ORDER BY a.prenom;
+-- Nous n'apparaissons pas dans ce résultat car nous sommes en train de faire une jointure INTERNE ! Dans une jointure interne, seule les valeurs ayant des correspondances dans l'autre table sont incluses
+-- Pierralex n'ayant pas encore d'emprunt, n'est pas présent dans la table emprunt, la jointure interne ne le sort pas ! 
++-----------+----------+
+| prenom    | id_livre |
++-----------+----------+
+| Benoit    |      101 |
+| Benoit    |      105 |
+| Benoit    |      100 |
+| Chloe     |      100 |
+| Chloe     |      105 |
+| Chloe     |      101 |
+| Guillaume |      100 |
+| Guillaume |      104 |
+| Laura     |      103 |
++-----------+----------+
+
+
+-- La solution pour ça, une jointure externe ! Voir schema sur la doc : https://sql.sh/cours/jointures
+
+-- Je remplace mon JOIN ou INNER JOIN par un LEFT ou RIGHT JOIN
+
+-- ATTENTION AU SENS DE LA JOINTURE 
+-- Ici dans le cas d'un LEFT, c'est la table citée en premier qui sera incluse en entier (la table la plus à gauche de la ligne de jointure)
+SELECT a.prenom, e.id_livre  
+FROM abonne a LEFT JOIN emprunt e ON e.id_abonne = a.id_abonne
+ORDER BY a.prenom;
++-----------+----------+
+| prenom    | id_livre |
++-----------+----------+
+| Benoit    |      100 |
+| Benoit    |      105 |
+| Benoit    |      101 |
+| Chloe     |      101 |
+| Chloe     |      105 |
+| Chloe     |      100 |
+| Guillaume |      104 |
+| Guillaume |      100 |
+| Laura     |      103 |
+| Pierralex |     NULL |
++-----------+----------+
+
+-- Ici dans le cas d'un RIGHT, c'est la table citée en dernier qui sera incluse en entièer (la table la plus à droite de la ligne de jointure)
+-- C'est la table abonne qui est ramenée en entier (incluant Pierralex)
+SELECT a.prenom, e.id_livre  
+FROM emprunt e RIGHT JOIN abonne a ON e.id_abonne = a.id_abonne
+ORDER BY a.prenom;
+
+-- EXERCICE 1 : Affichez tous les livres sans exception puis les id_abonne ayant emprunté ces livres si c'est le cas
+-- EXERCICE 2 : Affichez tous les prénoms des abonnés et s'ils ont fait des emprunts, affichez les id_livre, auteur et titre
+-- EXERCICE 3 : Affichez tous les prénoms des abonnés et s'ils ont fait des emprunts, affichez les id_livre, auteur et titre ainsi que les livres non empruntés :)
