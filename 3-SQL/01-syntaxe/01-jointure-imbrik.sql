@@ -100,14 +100,174 @@ SELECT titre FROM livre WHERE id_livre IN
 
 --------------- EXERCICES EN REQUETES IMBRIQUEES --------------------------------------------
 -- EXERCICE 1: Quels sont les prénoms des abonnés n'ayant pas rendu un livre à la bibliotheque.
+SELECT prenom FROM abonne WHERE id_abonne IN 
+    (SELECT id_abonne FROM emprunt WHERE date_rendu IS NULL);
++--------+
+| prenom |
++--------+
+| Benoit |
+| Chloe  |
++--------+
 -- EXERCICE 2 : Nous aimerions connaitre le(s) n° des livres empruntés par Chloé
+SELECT id_livre FROM emprunt WHERE id_abonne IN 
+    (SELECT id_abonne FROM abonne WHERE prenom = "Chloe");
++----------+
+| id_livre |
++----------+
+|      100 |
+|      105 |
+|      101 |
++----------+
 -- EXERCICE 3: Affichez les prénoms des abonnés ayant emprunté un livre le 07/12/2016.
+SELECT prenom FROM abonne WHERE id_abonne IN 
+    (SELECT id_abonne FROM emprunt WHERE date_sortie = "2016-12-07");
++-----------+
+| prenom    |
++-----------+
+| Guillaume |
+| Benoit    |
++-----------+
 -- EXERCICE 4: combien de livre Guillaume a emprunté à la bibliotheque ?
+SELECT COUNT(*) AS emprunt_guillaume FROM emprunt WHERE id_abonne IN 
+    (SELECT id_abonne FROM abonne WHERE prenom = "Guillaume");
++-------------------+
+| emprunt_guillaume |
++-------------------+
+|                 2 |
++-------------------+
 -- EXERCICE 5: Affichez la liste des abonnés ayant déjà emprunté un livre d'Alphonse Daudet
+SELECT prenom FROM abonne WHERE id_abonne IN 
+    (SELECT id_abonne FROM emprunt WHERE id_livre IN 
+        (SELECT id_livre FROM livre WHERE auteur = "alphonse daudet"));
++--------+
+| prenom |
++--------+
+| Laura  |
++--------+
 -- EXERCICE 6: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque.
+SELECT titre FROM livre WHERE id_livre IN 
+    (SELECT id_livre FROM emprunt WHERE id_abonne IN 
+        (SELECT id_abonne FROM abonne WHERE prenom = "Chloe"));
++-------------------------+
+| titre                   |
++-------------------------+
+| Une vie                 |
+| Les Trois Mousquetaires |
+| Bel-Ami                 |
++-------------------------+
 -- EXERCICE 7: Nous aimerions connaitre les titres des livres que Chloe n'a pas emprunté à la bibliotheque.
+SELECT titre FROM livre WHERE id_livre NOT IN 
+    (SELECT id_livre FROM emprunt WHERE id_abonne IN 
+        (SELECT id_abonne FROM abonne WHERE prenom = "Chloe"));
++-----------------+
+| titre           |
++-----------------+
+| Le pere Goriot  |
+| Le Petit chose  |
+| La Reine Margot |
++-----------------+
 -- EXERCICE 8: Nous aimerions connaitre les titres des livres que Chloe a emprunté à la bibliotheque ET qui n'ont pas été rendu.
+SELECT titre FROM livre WHERE id_livre IN 
+    (SELECT id_livre FROM emprunt WHERE date_rendu IS NULL AND id_abonne IN 
+        (SELECT id_abonne FROM abonne WHERE prenom = "Chloe"));
+
+SELECT titre FROM livre WHERE id_livre IN 
+    (SELECT id_livre FROM emprunt WHERE id_abonne IN 
+        (SELECT id_abonne FROM abonne WHERE prenom = "Chloe")
+          AND date_rendu IS NULL );
++-------------------------+
+| titre                   |
++-------------------------+
+| Les Trois Mousquetaires |
+| Bel-Ami                 |
++-------------------------+
+       
 -- EXERCICE 9 :  Qui a emprunté le plus de livre à la bibliotheque ?
+SELECT prenom FROM abonne WHERE id_abonne =
+  (SELECT id_abonne FROM emprunt GROUP BY id_abonne ORDER BY COUNT(*) DESC LIMIT 1);
+  -- Ci dessus, j'utilise un GROUP BY qui me permet d'appliquer une fonction d'agrégation par bloc sur chaque id_abonne, même si je décide de ne pas afficher le resultat de l'agrégation, je peux m'en servir dans ma requête comme ici dans le ORDER BY 
+
+  -- Petit soucis avec cette requête, elle n'est pas capable de me sortir plusieurs prénoms s'il y a plusieurs personnes égalité en nombre d'emprunts 
++--------+
+| prenom |
++--------+
+| Benoit |
++--------+
+
+
+-- Ci dessous la représentation de ce qu'aurait donné le resultat de fonction d'agrégation en affichant le COUNT(*)
+  SELECT id_abonne, COUNT(*) FROM emprunt GROUP BY id_abonne ORDER BY COUNT(*) DESC;
++-----------+----------+
+| id_abonne | COUNT(*) |
++-----------+----------+
+|         2 |        3 |
+|         3 |        3 |
+|         1 |        2 |
+|         4 |        1 |
++-----------+----------+
+
+
+-- Ci dessous séparation par bloc grâce au GROUP BY
+  +------------+----------+-----------+-------------+------------+
+| id_emprunt | id_livre | id_abonne | date_sortie | date_rendu |
++------------+----------+-----------+-------------+------------+
+
+|          1 |      100 |         1 | 2016-12-07  | 2016-12-11 |  abonne 1   =  2 emprunts
+|          5 |      104 |         1 | 2016-12-15  | 2016-12-30 |
+
+|          2 |      101 |         2 | 2016-12-07  | 2016-12-18 |  abonne 2 =  3 emprunts 
+|          6 |      105 |         2 | 2017-01-02  | 2017-01-15 |
+|          8 |      100 |         2 | 2017-02-20  | NULL       |
+
+|          3 |      100 |         3 | 2016-12-11  | 2016-12-19 |  abonne 3 =  3 emprunts 
+|          7 |      105 |         3 | 2017-02-15  | NULL       |
+|          9 |      101 |         3 | 2026-01-23  | NULL       |
+
+|          4 |      103 |         4 | 2016-12-12  | 2016-12-22 |  abonne 4 =  1 emprunt
++------------+----------+-----------+-------------+------------+
+
+
+-- Ci dessous une requête me permettant de me sortir plusieurs prénoms s'ils sont à égalité dans le top du nbr d'emprunts 
+SELECT prenom FROM abonne WHERE id_abonne IN
+  (SELECT id_abonne FROM emprunt GROUP BY id_abonne HAVING COUNT(*) = 
+      (SELECT MAX(nbr_emprunt) FROM (SELECT COUNT(*) AS nbr_emprunt FROM emprunt GROUP BY id_abonne) AS count));
+
+      -- On fait face ici à la création d'une table temporaire par la requête : (SELECT COUNT(*) AS nbr_emprunt FROM emprunt GROUP BY id_abonne) AS count
+      -- Cela va créer une table nommée count qui aura un nom de champ "nbr_emprunt" contenant les valeurs du count de chaque id_abonne
+        -- Sur cette table temporaire on demande un MAX(nbr_emprunt) pour isoler quel est le nombre d'emprunt le plus élevé 
+          -- On se sert de ce nombre d'emprunt le plus élevé comme condition HAVING pour notre GROUP BY de la seconde requête 
+
++--------+
+| prenom |
++--------+
+| Benoit |
+| Chloe  |
++--------+
+
+Table : count 
++-------------+
+| nbr_emprunt |
++-------------+
+|           2 |
+|           3 |
+|           3 |
+|           1 |
++-------------+
+
+-- SELECT MAX(nbr_emprunt) FROM count;
+
+-- On peut le faire sans table temporaire avec la requête suivante :
+-- On simule en gros la même chose, en récupérant la valeur la plus élevée d'emprunt grâce au ORDER BY DESC LIMIT 1 
+SELECT prenom FROM abonne WHERE id_abonne IN 
+  (SELECT id_abonne FROM emprunt GROUP BY id_abonne HAVING COUNT(*) = 
+    (SELECT COUNT(*) FROM emprunt GROUP BY id_abonne ORDER BY COUNT(*) DESC LIMIT 1));
++--------+
+| prenom |
++--------+
+| Benoit |
+| Chloe  |
++--------+
+
 
 
 ----------------------------------------------------------------
@@ -124,7 +284,7 @@ SELECT titre FROM livre WHERE id_livre IN
 -- Nous aimerions connaître les dates de sortie et les dates de rendu pour l'abonné Guillaume, en affichant les dates et aussi le prenom Guillaume à côté ! 
     -- En imbriquée ce n'est pas possible ! Car les infos des emprunts sont sur la table emprunt et l'info Guillaume est sur une table différente ! 
 
--- Grâce à la jointe, c'est OK ! 
+-- Grâce à la jointure, c'est OK ! 
 
 -- Première syntaxe (pour la facilité)
 
@@ -169,3 +329,11 @@ WHERE a.prenom = "Guillaume";
 -- EXERCICE 3 : Nous aimerions connaitre le nombre de livre emprunté par chaque abonné 
 -- EXERCICE 4 : Nous aimerions connaitre le nombre de livre emprunté à rendre par chaque abonné 
 -- EXERCICE 5 : Qui (prenom) a emprunté Quoi (titre) et Quand (date_sortie) ?
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+------ REQUETES EN JOINTURE EXTERNE ----------------------------
+----------------------------------------------------------------
+----------------------------------------------------------------
+
