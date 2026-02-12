@@ -1,5 +1,37 @@
 <?php
 
+
+
+/*
+
+Le protocole POST est l'un des deux principaux protocoles utilisés pour envoyer des données d'un navigateur web vers un serveur, l'autre étant GET. Contrairement à GET, qui envoie les données dans l'URL, POST les envoie dans le corps de la requête HTTP, ce qui permet de transmettre des informations plus volumineuses et plus sensibles de manière plus sécurisée.
+Utilisation du protocole POST en PHP
+
+    Transmission de données : Le protocole POST est principalement utilisé pour envoyer des données qui ne doivent pas être visibles dans l'URL ou qui contiennent beaucoup d'informations, comme :
+        Formulaires contenant des informations personnelles (login, inscription, paiement).
+        Téléchargement de fichiers.
+        Soumission de données qui modifient un état sur le serveur (par exemple : création de compte, modification de profil, ajout d’un produit, etc.).
+
+    Sécurisation des données :
+        POST est privilégié pour l'envoi de données sensibles, car les informations ne sont pas affichées dans l'URL (contrairement à GET). Bien qu'elles ne soient pas chiffrées par défaut (sauf si un certificat SSL est utilisé), elles ne sont pas visibles par l'utilisateur dans la barre d'adresse, ce qui offre un certain degré de protection.
+        C’est aussi préférable pour des données volumineuses, car il n’y a pas de limite stricte à la taille des données envoyées en POST (contrairement à GET qui est limité par la longueur maximale des URL).
+
+        En PHP, lorsque vous utilisez un formulaire avec la méthode POST, vous accédez aux données soumises via la superglobale $_POST.
+
+Points importants à noter avec POST
+
+    Taille des données :
+        Le protocole POST permet d’envoyer des données volumineuses. Par exemple, un formulaire avec de nombreux champs ou des fichiers peut être envoyé par POST sans les restrictions liées à la longueur des URL, qui limitent GET.
+        Attention cependant à la limite de taille des données définie par le serveur (variable post_max_size dans php.ini).
+
+    Visibilité des données :
+        Avec POST, les données ne sont pas affichées dans l’URL, ce qui est un avantage en termes de sécurité pour des informations sensibles comme des mots de passe ou des numéros de carte bancaire. Toutefois, il faut toujours utiliser un protocole HTTPS pour protéger les données en transit.
+
+    Côté serveur : $_POST :
+        PHP reçoit et traite les données envoyées via POST en utilisant la superglobale $_POST, un tableau associatif contenant les valeurs des champs du formulaire (ex. $_POST['name']).
+        
+*/
+
 // echo $_POST["name"];
 
 // En PHP, nous n'avons pas de console log, donc il faut bien comprendre parfois quelles sont les informations que l'on manipule ???
@@ -8,7 +40,7 @@
 
 // Dans le cas d'un tableau array, var_dump va me retourner la totalité du contenu du array, c'est à dire je pourrais visualiser les clés et leurs valeurs, cela me permet de comprendre déjà ici dans le cas du formulaire, si mon formulaire est bien conçu et si j'en récupère les bonnes clés et valeurs 
 
-// var_dump($_POST);
+var_dump($_POST);
 
 // print_r($_POST);
 
